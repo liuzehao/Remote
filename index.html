@@ -68,7 +68,7 @@ $("#sum").click(function(){
 		var a=(2+parseInt($("#in").val())/100).toFixed(2);//a是中间利差
 	var temp=(a-ru).toFixed(4);
 	var b=parseInt($("#dai").val());//b是贷款额度
-	var c=Math.ceil(temp*b/1000)*1000;//c是向上取整后的中间值即总贷款额度
+	var c=Math.ceil(temp*b/100)*100;//c是向上取整后的中间值即总贷款额度
 	var d=c*1.0903//d是总共的本息额度
 	var e=Math.ceil(d/36*100)/100;//e是月供
 		$("#a1").html("");
