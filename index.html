@@ -37,11 +37,16 @@
 					</div>
 					<p><button type="button" id="sum" class="am-btn am-btn-default" >计算</button></p>
 				</fieldset>
-				<div>
-		<p id="a1"></p>
+				<div class="am-g">
+				<p id="az"style="margin-bottom: -20px;margin-top: -30px;"></p>
+		<p id="a1" ></p>
+		<p id="bz"style="margin-bottom: -20px;"></p>
 		<p id="b1"></p>
+		<p id="cz"style="margin-bottom: -20px;"></p>
 		<p id="c1"></p>
-		<p id="d1"></p>	</div>
+		<p id="dz"style="margin-bottom: -20px;"></p>
+		<p id="d1"></p>	
+		</div>
 			</form>
 		</div>
 		
@@ -70,11 +75,14 @@ $("#sum").click(function(){
 		$("#b1").html("");
 		$("#c1").html("");
 		$("#d1").html("");
-			$("#a1").html("利差为:"+a+"-"+ru+"="+temp);
-			$("#b1").html("总贷款额为(百位取整数):"+b+"*"+a+"="+c);
-			$("#c1").html("总本息为:"+c+"*"+ru+"="+d);
-			$("#d1").html("月供为:"+d+"/"+36+"="+e);
-			
+		$("#az").html("利差为:");
+			$("#a1").html(a+"-"+ru+"="+temp);
+			$("#bz").html("总贷款额为(百位取整数):");
+			$("#b1").html(b+"*"+a+"="+c);
+			$("#cz").html("总本息为:");
+			$("#c1").html(c+"*"+ru+"="+d);
+			$("#dz").html("月供为:");
+			$("#d1").html(d+"/"+36+"="+e);		
 		});
 	});
 </script>
