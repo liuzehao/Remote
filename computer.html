@@ -12,15 +12,6 @@
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <link rel="stylesheet" href="css/amazeui.min.css">
   <link rel="stylesheet" href="css/app.css">
-	<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?a0509df2f6b10e88d5ee99a6faf6d643";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 </head>
 <body>
 <div class="am-g myapp-login">
@@ -32,7 +23,7 @@ var _hmt = _hmt || [];
 			<div class="myapp-login-logo-text">
 				利率<span>计算器</span>
 				
-				<div class="info">天下没有难做的单子--郑州刘乾多</div>
+				<div class="info">天下没有难做的单子--郑州留乾多</div>
 				
 			</div>
 		</div>
@@ -92,6 +83,7 @@ var _hmt = _hmt || [];
 	
 	
 $("#sum").click(function(){
+
 var ru=1.0903;
 var yue=36;
    $("label").each(function(){
@@ -104,20 +96,25 @@ var yue=36;
 		var a=(2+parseInt($("#in").val())/100).toFixed(2);//a是中间利差
 	var temp=(a-ru).toFixed(4);
 	var b=parseInt($("#dai").val());//b是贷款额度
-	var c=Math.ceil(temp*b/100)*100;//c是向上取整后的中间值即总贷款额度
+	
+	if(temp*b%100>0.0001){
+	var c=(Math.ceil(temp*b/100))*100;//c是向上取整后的中间值即总贷款额度
+	}else{
+	var c=(Math.ceil(temp*b/100)-1)*100;//c是向上取整后的中间值即总贷款额度
+	}
 	var d=c*ru//d是总共的本息额度
 	var e=Math.ceil(d/yue*100)/100;//e是月供
 		$("#a1").html("");
 		$("#b1").html("");
 		$("#c1").html("");
 		$("#d1").html("");
-		$("#az").html("公式:");
+		$("#az").html("利差为:");
 			$("#a1").html(a+"-"+ru+"="+temp);
-			$("#bz").html("分期金额(百位取整数):");
+			$("#bz").html("总贷款额为(百位取整数):");
 			$("#b1").html(b+"*"+temp+"="+c);
-			$("#cz").html("贷款总金额:");
+			$("#cz").html("总本息为:");
 			$("#c1").html(c+"*"+ru+"="+d);
-			$("#dz").html("月供:");
+			$("#dz").html("月供为:");
 			$("#d1").html(d+"/"+yue+"="+e);	
 		
 		});
