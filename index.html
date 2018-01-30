@@ -23,20 +23,20 @@
 			<div class="myapp-login-logo-text">
 				利率<span>计算器</span>
 				
-				<div class="info">天下没有难做的单子--郑州刘乾多</div>
+				<div class="info">天下没有难做的单子</div>
 				
 			</div>
 		</div>
 		
 		<div class="am-u-sm-10 login-am-center">
-	<div class="am-btn-group doc-js-btn-1" style="margin-left:30px;" data-am-button>
-  <label class="am-btn am-btn-success am-active am-btn-lg" value="1.0903">
+	<div class="am-btn-group doc-js-btn-1" style="margin-left: 25px;" data-am-button>
+  <label class="am-btn am-btn-success am-active am-btn-lg" value="1.0903" yue="36">
     <input type="radio" name="options"  id="option1" checked> 三年
   </label>
-  <label class="am-btn am-btn-success am-btn-lg" value="1.065">
+  <label class="am-btn am-btn-success am-btn-lg" value="1.065" yue="24">
     <input type="radio" name="options"  id="option2"> 两年
   </label>
-  <label class="am-btn am-btn-success am-btn-lg" value="1.0358">
+  <label class="am-btn am-btn-success am-btn-lg" value="1.0358" yue="12">
     <input type="radio" name="options"  id="option3"> 一年
   </label>
 </div>
@@ -84,10 +84,12 @@
 	
 $("#sum").click(function(){
 var ru=1.0903;
+var yue=36;
    $("label").each(function(){
       if($(this).hasClass("am-active"))
 	  {
 	  ru=parseFloat($(this).attr("value"));
+	  yue=parseFloat($(this).attr("yue"));
 	  }
     });
 		var a=(2+parseInt($("#in").val())/100).toFixed(2);//a是中间利差
@@ -95,7 +97,7 @@ var ru=1.0903;
 	var b=parseInt($("#dai").val());//b是贷款额度
 	var c=Math.ceil(temp*b/100)*100;//c是向上取整后的中间值即总贷款额度
 	var d=c*ru//d是总共的本息额度
-	var e=Math.ceil(d/36*100)/100;//e是月供
+	var e=Math.ceil(d/yue*100)/100;//e是月供
 		$("#a1").html("");
 		$("#b1").html("");
 		$("#c1").html("");
@@ -107,7 +109,7 @@ var ru=1.0903;
 			$("#cz").html("总本息为:");
 			$("#c1").html(c+"*"+ru+"="+d);
 			$("#dz").html("月供为:");
-			$("#d1").html(d+"/"+36+"="+e);	
+			$("#d1").html(d+"/"+yue+"="+e);	
 		
 		});
 	});
