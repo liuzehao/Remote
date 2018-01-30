@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,11 +22,26 @@
 		<div class="myapp-login-logo-text">
 			<div class="myapp-login-logo-text">
 				利率<span>计算器</span>
+				
 				<div class="info">天下没有难做的单子</div>
+				
 			</div>
 		</div>
+		
 		<div class="am-u-sm-10 login-am-center">
+	<div class="am-btn-group doc-js-btn-1" style="margin-left: 25px;" data-am-button>
+  <label class="am-btn am-btn-success am-active am-btn-lg" value="1.0903">
+    <input type="radio" name="options"  id="option1" checked> 三年
+  </label>
+  <label class="am-btn am-btn-success am-btn-lg" value="1.065">
+    <input type="radio" name="options"  id="option2"> 两年
+  </label>
+  <label class="am-btn am-btn-success am-btn-lg" value="1.0358">
+    <input type="radio" name="options"  id="option3"> 一年
+  </label>
+</div>
 			<form class="am-form">
+	
 				<fieldset>
 					<div class="am-form-group">
 						<input type="text" class="am-form-field am-radius" id="in" placeholder="输入利率">
@@ -38,14 +53,14 @@
 					<p><button type="button" id="sum" class="am-btn am-btn-default" >计算</button></p>
 				</fieldset>
 				<div class="am-g">
-				<p id="az"style="margin-bottom: -20px;margin-top: -30px;"></p>
-		<p id="a1" ></p>
-		<p id="bz"style="margin-bottom: -20px;"></p>
-		<p id="b1"></p>
-		<p id="cz"style="margin-bottom: -20px;"></p>
-		<p id="c1"></p>
-		<p id="dz"style="margin-bottom: -20px;"></p>
-		<p id="d1"></p>	
+				<p id="az"style="margin-bottom: -20px;margin-top: -30px;margin-left: 20px;"></p>
+		<p id="a1" style="margin-left: 20px;"></p>
+		<p id="bz"style="margin-bottom: -20px;margin-left: 20px;"></p>
+		<p id="b1"style="margin-left: 20px;"></p>
+		<p id="cz"style="margin-bottom: -20px;margin-left: 20px;"></p>
+		<p id="c1"style="margin-left: 20px;"></p>
+		<p id="dz"style="margin-bottom: -20px;margin-left: 20px;"></p>
+		<p id="d1"style="margin-left: 20px;"></p>	
 		</div>
 			</form>
 		</div>
@@ -61,15 +76,25 @@
 <![endif]-->
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
-var ru=1.0903;
+
 
 	$(document).ready(function(){
+	
+	
+	
 $("#sum").click(function(){
+var ru=1.0903;
+   $("label").each(function(){
+      if($(this).hasClass("am-active"))
+	  {
+	  ru=parseFloat($(this).attr("value"));
+	  }
+    });
 		var a=(2+parseInt($("#in").val())/100).toFixed(2);//a是中间利差
 	var temp=(a-ru).toFixed(4);
 	var b=parseInt($("#dai").val());//b是贷款额度
 	var c=Math.ceil(temp*b/100)*100;//c是向上取整后的中间值即总贷款额度
-	var d=c*1.0903//d是总共的本息额度
+	var d=c*ru//d是总共的本息额度
 	var e=Math.ceil(d/36*100)/100;//e是月供
 		$("#a1").html("");
 		$("#b1").html("");
@@ -82,10 +107,13 @@ $("#sum").click(function(){
 			$("#cz").html("总本息为:");
 			$("#c1").html(c+"*"+ru+"="+d);
 			$("#dz").html("月供为:");
-			$("#d1").html(d+"/"+36+"="+e);		
+			$("#d1").html(d+"/"+36+"="+e);	
+		
 		});
 	});
 </script>
+
+<script src="js/selectFilter.js"></script>
 <script src="js/amazeui.min.js"></script>
 <script src="js/app.js"></script>
 </body>
