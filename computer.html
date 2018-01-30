@@ -77,11 +77,23 @@
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
 
+function accMul(arg1, arg2) {
+    var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+    try {
+        m += s1.split(".")[1].length;
+    }
+    catch (e) {
+    }
+    try {
+        m += s2.split(".")[1].length;
+    }
+    catch (e) {
+    }
+    return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+}
 
-	$(document).ready(function(){
-	
-	
-	
+
+$(document).ready(function(){		
 $("#sum").click(function(){
 
 var ru=1.0903;
@@ -97,11 +109,8 @@ var yue=36;
 	var temp=(a-ru).toFixed(4);
 	var b=parseInt($("#dai").val());//b是贷款额度
 	
-	if(temp*b%100>0.0001){
-	var c=(Math.ceil(temp*b/100))*100;//c是向上取整后的中间值即总贷款额度
-	}else{
-	var c=(Math.ceil(temp*b/100)-1)*100;//c是向上取整后的中间值即总贷款额度
-	}
+	var c=(Math.ceil(accMul(temp,b)/100))*100;//c是向上取整后的中间值即总贷款额度
+	
 	var d=c*ru//d是总共的本息额度
 	var e=Math.ceil(d/yue*100)/100;//e是月供
 		$("#a1").html("");
