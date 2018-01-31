@@ -23,7 +23,7 @@
 			<div class="myapp-login-logo-text">
 				利率<span>计算器</span>
 				
-				<div class="info">天下没有难做的单子--郑州刘乾多</div>
+				<div class="info">天下没有难算的单子--郑州刘乾多</div>
 				
 			</div>
 		</div>
@@ -76,7 +76,6 @@
 <![endif]-->
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
-/*2018.1.30 create by liuzehao qq506039293*/
 function accAdd(arg1, arg2) {//加法
     var r1, r2, m, c;
     try {
@@ -122,7 +121,6 @@ function accMul(arg1, arg2) {//解决浮点乘法
     }
     return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
 }
-
 function accSub(arg1, arg2) {//浮点减法
     var r1, r2, m, n;
     try {
@@ -159,10 +157,8 @@ function accDiv(arg1, arg2) {//浮点除法
         return (r1 / r2) * pow(10, t2 - t1);
     }
 }
-
 $(document).ready(function(){		
 $("#sum").click(function(){
-
 var ru=1.0903;
 var yue=36;
    $("label").each(function(){
@@ -175,7 +171,7 @@ var yue=36;
 		var a=accAdd(2,accDiv(parseFloat($("#in").val()),100));//a是中间利差
 	var temp=accSub(a,ru);
 	var b=parseInt($("#dai").val());//b是贷款额度
-	var f=accMul(temp,b);//分期金额精确值
+	
 	var c=(Math.ceil(accMul(temp,b)/100))*100;//c是向上取整后的中间值即总贷款额度
 	
 	var d=accMul(c,ru)//d是总共的本息额度
@@ -186,8 +182,8 @@ var yue=36;
 		$("#d1").html("");
 		$("#az").html("公式:");
 			$("#a1").html(a+"-"+ru+"="+temp);
-			$("#bz").html("分期金额:");
-			$("#b1").html(b+"*"+temp+"="+f+"-->"+c);
+			$("#bz").html("分期金额(百位取整数):");
+			$("#b1").html(b+"*"+temp+"="+c);
 			$("#cz").html("贷款总金额:");
 			$("#c1").html(c+"*"+ru+"="+d);
 			$("#dz").html("月供:");
@@ -195,7 +191,6 @@ var yue=36;
 		
 		});
 	});
-
 </script>
 
 <script src="js/selectFilter.js"></script>
