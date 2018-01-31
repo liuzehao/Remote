@@ -44,7 +44,6 @@ function accMul(arg1, arg2) {//解决浮点乘法
     }
     return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
 }
-
 function accSub(arg1, arg2) {//浮点减法
     var r1, r2, m, n;
     try {
@@ -81,10 +80,8 @@ function accDiv(arg1, arg2) {//浮点除法
         return (r1 / r2) * pow(10, t2 - t1);
     }
 }
-
 $(document).ready(function(){		
 $("#sum").click(function(){
-
 var ru=1.0903;
 var yue=36;
    $("label").each(function(){
@@ -98,7 +95,7 @@ var yue=36;
 	var temp=accSub(a,ru);
 	var b=parseInt($("#dai").val());//b是贷款额度
 	var f=accMul(temp,b);//分期金额精确值
-	var c=(Math.ceil(accMul(temp,b)/100))*100;//c是向上取整后的中间值即总贷款额度
+	var c=(Math.ceil(f/100))*100;//c是向上取整后的中间值即总贷款额度
 	
 	var d=accMul(c,ru)//d是总共的本息额度
 	var e=accDiv(d,yue);//e是月供
